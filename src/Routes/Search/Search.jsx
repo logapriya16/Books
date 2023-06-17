@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import { Books } from "../../backend/books";
 import "./Search.css";
 import { BookContext } from "../../Context/BookContext";
+import { useNavigate } from "react-router-dom";
 export default function Search() {
   const { ShelveHandeler } = useContext(BookContext);
+  const navigate=useNavigate()
   return (
     <div className="search-container">
       <input type="search" placeholder="search a book" />
+<button onClick={()=>navigate('/')}>Home</button>
       <div className="books">
        <ul className="books"> {Books.map((book) => {
           return (
