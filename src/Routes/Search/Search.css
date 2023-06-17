@@ -1,0 +1,17 @@
+.books{
+    display: flex ;
+    
+}
+.books-img{
+    height: 300px;
+    width: 300px;
+    padding: 0.5rem;
+    border-radius: 26px;
+    border: 2px groove;
+    margin: 0.5rem;
+}
+.shelve-container{
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 35px;
+}
