@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Books } from "../../backend/books";
-import "./Search.css";
+import "../../App.css";
 import { BookContext } from "../../Context/BookContext";
 import { useNavigate } from "react-router-dom";
 export default function Search() {
-  const { ShelveHandeler, SearchHandler ,search,} = useContext(BookContext);
+  const { ShelveHandeler, SearchHandler, search, fixShelve } =
+    useContext(BookContext);
   const navigate = useNavigate();
   return (
     <div className="search-container">
@@ -14,7 +14,7 @@ export default function Search() {
         onChange={(e) => SearchHandler(e.target.value)}
       />
       <button onClick={() => navigate("/")}>Home</button>
-      <div className="books">
+      <div>
         <ul className="books">
           {" "}
           {search.map((book) => {
@@ -29,7 +29,10 @@ export default function Search() {
                   name="shelve"
                   id="shelve-selection"
                   className="shelve-container"
-                  onChange={(e) => ShelveHandeler(e.target.value, book)}
+                  onChange={(e) => {
+                    ShelveHandeler(e.target.value, book._id);
+                    fixShelve(book, book._id, e.target.value);
+                  }}
                 >
                   <option value="">Move to ...</option>
                   <option value="currently reading">currently reading</option>
@@ -40,6 +43,7 @@ export default function Search() {
                 <p>{book.name}</p>
                 <p>{book.author}</p>
                 <p>{book.category}</p>
+                <p>{book.shelve}</p>
               </li>
             );
           })}

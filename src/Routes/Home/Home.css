@@ -1,0 +1,4 @@
+.books-shelve{
+    display: flex;
+    flex-wrap: wrap;
+}

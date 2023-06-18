@@ -1,76 +1,61 @@
 import React, { createContext, useState } from "react";
 import { Books } from "../backend/books";
-import { v4 as uuid } from "uuid";
 
 export const BookContext = createContext();
 export default function BookProvider({ children }) {
-  const [search, setSearch] = useState(Books);
+  const [allbooks, setAllBooks] = useState(Books);
+
+  const [search, setSearch] = useState(allbooks);
   const SearchHandler = (text) => {
-    console.log(text);
     setSearch(
-      Books.filter((item) =>
+      search.filter((item) =>
         item.name.toLowerCase().includes(text.toLowerCase())
       )
     );
   };
-  const [shelve, setShelve] = useState({
-    currentlyReading: [
-      {
-        _id: uuid(),
 
-        name: "Collected Short Stories, The (The Penguin Ray Library)",
-        author: " Satyajit Ray",
-        category: "classic-fiction",
-        img: "https://m.media-amazon.com/images/I/51U9tK6DkKL._SX325_BO1,204,203,200_.jpg",
-      },
-      {
-        _id: uuid(),
+  const ShelveHandeler = (shelveType, id) => {
+   const temp=allbooks.reduce(
+    (acc, item) =>
+      item._id === id
+        ? [...acc, { ...item, categoryName: shelveType }]
+        : [...acc, { ...item }],
+    []
+  )
+    setAllBooks(temp);
+    console.log(shelveType);
+    // if (shelveType === "currently reading") {
+    //   //console.log(shelveType);
+    //   setShelve(shelveType);
+    //   fixShelve();
+    // }
 
-        name: "The Complete Novels of Sherlock Holmes",
-        author: "  Arthur Conan Doyle",
-        category: "classic-fiction",
-        img: "https://m.media-amazon.com/images/I/61Q7MHNU9qL._SY498_BO1,204,203,200_.jpg",
-      },
-    ],
-    wantToRead: [
-      {
-        _id: uuid(),
+    // else if (shelveType === "want to read") {
+    //   setShelve(shelveType);
+    //   fixShelve();
+    // }
 
-        name: "The Time Machine",
-        author: " H. G. Wells ",
-        category: "classic-fiction",
-        img: "https://m.media-amazon.com/images/I/51YP7fM361S._SX460_BO1,204,203,200_.jpg",
-      },
-    ],
-    Read: [
-      {
-        _id: uuid(),
-
-        name: "108 Panchatantra Stories for Children",
-        author: "Maple Press",
-        category: "children",
-        img: "https://m.media-amazon.com/images/I/51trTdAFECL._SX385_BO1,204,203,200_.jpg",
-      },
-    ],
-    none: [],
-  });
-
-  const IsCurrentlyReading = (item) => {
-    return shelve.currentlyReading.includes(item);
+    // else if (shelveType === "read") {
+    //   setShelve(shelveType);
+    //   fixShelve();
+    // }
+    // else  {
+    //   setShelve(shelveType);
+    //   fixShelve();
+    // }
   };
-  const IsWantToRead = (item) => {
-    shelve.wantToRead.includes(item);
+  //console.log(shelve);
+  const fixShelve = (book, id) => {
+    // console.log(sheelve, "inside fix");
+    // Books.map((item) =>
+    //   item._id === id ? (item.shelve = sheelve) : item.shelve
+    // );
   };
-  const IsRead = (item) => {
-    shelve.Read.includes(item);
-  };
-  const IsNone = (item) => {
-    shelve.none.includes(item);
-  };
-  const ShelveHandeler = (shelveType, book) => {};
-  console.log(shelve);
+
   return (
-    <BookContext.Provider value={{ ShelveHandeler, shelve, SearchHandler ,search,}}>
+    <BookContext.Provider
+      value={{ ShelveHandeler, fixShelve, SearchHandler, search , allbooks}}
+    >
       {children}
     </BookContext.Provider>
   );
