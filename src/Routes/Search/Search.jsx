@@ -9,11 +9,12 @@ export default function Search() {
   return (
     <div className="search-container">
       <input
+      className="search"
         type="search"
         placeholder="search a book"
         onChange={(e) => SearchHandler(e.target.value)}
       />
-      <button onClick={() => navigate("/")}>Home</button>
+      <button onClick={() => navigate("/") } className="primary-button">Home</button>
       <div>
         <ul className="books">
           {" "}
@@ -34,16 +35,16 @@ export default function Search() {
                   
                   }}
                 >
-                  <option value="">Move to ...</option>
+                  <option value="" disabled="true">Move to ...</option>
                   <option value="currently reading">currently reading</option>
                   <option value="want to read">Want to Read</option>
                   <option value="read">Read</option>
                   <option value="none">none</option>
                 </select>
-                <p>{book.name}</p>
-                <p>{book.author}</p>
-                <p>{book.category}</p>
-                <p>{book.shelve}</p>
+                <p className="info">{book.name}</p>
+                <p className="info">{book.author}</p>
+                <p className="info">{book.category}</p>
+               
               </li>
             );
           })}

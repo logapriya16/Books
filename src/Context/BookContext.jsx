@@ -7,11 +7,10 @@ export default function BookProvider({ children }) {
 
   const [search, setSearch] = useState(allbooks);
   const SearchHandler = (text) => {
-    setSearch(
-      search.filter((item) =>
-        item.name.toLowerCase().includes(text.toLowerCase())
-      )
+    const temp = allbooks.filter((item) =>
+      item.name.toLowerCase().includes(text.toLowerCase())
     );
+    setSearch(temp);
   };
 
   const ShelveHandeler = (shelveType, id) => {

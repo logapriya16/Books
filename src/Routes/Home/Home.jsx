@@ -7,10 +7,23 @@ export default function Home() {
   const { ShelveHandeler, allbooks } = useContext(BookContext);
   return (
     <div>
-      <h1>Books Manager</h1>
-      <button onClick={() => navigate("/search")}>Search</button>
+      <h1
+        style={{
+          color: "#FF8551",
+          border: "groove",
+          padding: "2rem",
+          fontSize: "50px",
+          marginTop: "0",
+          letterSpacing:"0.2rem"
+        }}
+      >
+        Bookish Hub
+      </h1>
+      <button onClick={() => navigate("/search")} className="primary-button">
+        Search
+      </button>
       <div className="books-currentlyreading">
-        <h3>Currently Reading Books</h3>
+        <h1 >Currently Reading Books</h1>
         <ul className="books-shelve">
           {allbooks
             .filter((item) => item.shelve === "currently reading")
@@ -28,23 +41,24 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="">Move to ...</option>
+                    <option value="" disabled="true">
+                      Move to ...
+                    </option>
                     <option value="currently reading">currently reading</option>
                     <option value="want to read">Want to Read</option>
                     <option value="read">Read</option>
                     <option value="none">none</option>
                   </select>
-                  <p>{book.name}</p>
-                  <p>{book.author}</p>
-                  <p>{book.category}</p>
-                  <p>{book.shelve}</p>
+                  <p className="info">{book.name}</p>
+                  <p className="info">{book.author}</p>
+                  <p className="info">{book.category}</p>
                 </li>
               );
             })}
         </ul>
       </div>
       <div className="books-read">
-        <h3>Books wanted to be read</h3>
+        <h1>Books wanted to be read</h1>
         <ul className="books-shelve">
           {allbooks
             .filter((item) => item.shelve === "want to read")
@@ -62,23 +76,24 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="">Move to ...</option>
+                    <option value="" disabled="true">
+                      Move to ...
+                    </option>
                     <option value="currently reading">currently reading</option>
                     <option value="want to read">Want to Read</option>
                     <option value="read">Read</option>
                     <option value="none">none</option>
                   </select>
-                  <p>{book.name}</p>
-                  <p>{book.author}</p>
-                  <p>{book.category}</p>
-                  <p>{book.shelve}</p>
+                  <p className="info">{book.name}</p>
+                  <p className="info">{book.author}</p>
+                  <p className="info">{book.category}</p>
                 </li>
               );
             })}
         </ul>
       </div>
       <div className="books-wanttoread">
-        <h3>Read Books</h3>
+        <h1>Read Books</h1>
         <ul className="books-shelve">
           {allbooks
             .filter((item) => item.shelve === "read")
@@ -96,7 +111,9 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="">Move to ...</option>
+                    <option value="" disabled="true">
+                      Move to ...
+                    </option>
                     <option value="currently reading">currently reading</option>
                     <option value="want to read">Want to Read</option>
                     <option value="read">Read</option>

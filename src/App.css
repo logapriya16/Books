@@ -1,15 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap");
+
 .App {
   text-align: center;
+  background-color: #9bcdd2;
+  color: white;
+  font-family: "Lobster", cursive;
 }
 
 .books {
   display: flex;
   flex-wrap: wrap;
 }
+.primary-button {
+  padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+  background-color: #ff8551;
+  border: 0;
+  color: white;
+  font-weight: bold;
+}
+.primary-button:hover {
+  background-color: #e7b8a4;
+}
 .books-container {
   border: 1px solid rgb(187, 180, 190);
   margin: 0.5rem;
-
+}
+.books-shelve {
+  display: flex;
+  flex-wrap: wrap;
 }
 .books-img {
   height: 300px;
@@ -20,7 +38,29 @@
   margin: 0.5rem;
 }
 .shelve-container {
-  border-radius: 50%;
   padding: 0.5rem;
-  width: 35px;
+  width: 50px;
+  background-color: #fbf4f4;
+  color: rgb(150, 238, 150);
+}
+.search-container {
+  text-align: center;
+  align-items: center;
+}
+.search {
+  display: block;
+  text-align: center;
+  align-self: center;
+  padding: 1rem;
+  width: 700px;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-bottom: 2rem;
+}
+.info {
+  text-align: left;
+  font-size: medium;
+}
+@media screen {
+  
 }
