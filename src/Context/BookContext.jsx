@@ -15,46 +15,20 @@ export default function BookProvider({ children }) {
   };
 
   const ShelveHandeler = (shelveType, id) => {
-   const temp=allbooks.reduce(
-    (acc, item) =>
-      item._id === id
-        ? [...acc, { ...item, categoryName: shelveType }]
-        : [...acc, { ...item }],
-    []
-  )
+    const temp = allbooks.reduce(
+      (acc, item) =>
+        item._id === id
+          ? [...acc, { ...item, shelve: shelveType }]
+          : [...acc, { ...item }],
+      []
+    );
     setAllBooks(temp);
-    console.log(shelveType);
-    // if (shelveType === "currently reading") {
-    //   //console.log(shelveType);
-    //   setShelve(shelveType);
-    //   fixShelve();
-    // }
-
-    // else if (shelveType === "want to read") {
-    //   setShelve(shelveType);
-    //   fixShelve();
-    // }
-
-    // else if (shelveType === "read") {
-    //   setShelve(shelveType);
-    //   fixShelve();
-    // }
-    // else  {
-    //   setShelve(shelveType);
-    //   fixShelve();
-    // }
-  };
-  //console.log(shelve);
-  const fixShelve = (book, id) => {
-    // console.log(sheelve, "inside fix");
-    // Books.map((item) =>
-    //   item._id === id ? (item.shelve = sheelve) : item.shelve
-    // );
+    console.log(allbooks);
   };
 
   return (
     <BookContext.Provider
-      value={{ ShelveHandeler, fixShelve, SearchHandler, search , allbooks}}
+      value={{ ShelveHandeler, SearchHandler, search, allbooks }}
     >
       {children}
     </BookContext.Provider>

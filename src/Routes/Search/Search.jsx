@@ -3,7 +3,7 @@ import "../../App.css";
 import { BookContext } from "../../Context/BookContext";
 import { useNavigate } from "react-router-dom";
 export default function Search() {
-  const { ShelveHandeler, SearchHandler, search, fixShelve } =
+  const { ShelveHandeler, SearchHandler, search } =
     useContext(BookContext);
   const navigate = useNavigate();
   return (
@@ -31,7 +31,7 @@ export default function Search() {
                   className="shelve-container"
                   onChange={(e) => {
                     ShelveHandeler(e.target.value, book._id);
-                    fixShelve(book, book._id, e.target.value);
+                  
                   }}
                 >
                   <option value="">Move to ...</option>
