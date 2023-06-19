@@ -48,14 +48,10 @@
   align-items: center;
 }
 .search {
-  display: block;
-  text-align: center;
-  align-self: center;
-  padding: 1rem;
-  width: 700px;
-  margin-left: 20rem;
-  margin-right: 20rem;
-  margin-bottom: 2rem;
+  
+  padding: 0.7rem;
+  
+  
 }
 .info {
   text-align: left;

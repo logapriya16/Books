@@ -3,18 +3,19 @@ import "../../App.css";
 import { BookContext } from "../../Context/BookContext";
 import { useNavigate } from "react-router-dom";
 export default function Search() {
-  const { ShelveHandeler, SearchHandler, search } =
-    useContext(BookContext);
+  const { ShelveHandeler, SearchHandler, search } = useContext(BookContext);
   const navigate = useNavigate();
   return (
     <div className="search-container">
       <input
-      className="search"
+        className="search"
         type="search"
         placeholder="search a book"
         onChange={(e) => SearchHandler(e.target.value)}
       />
-      <button onClick={() => navigate("/") } className="primary-button">Home</button>
+      <button onClick={() => navigate("/")} className="primary-button">
+        Home
+      </button>
       <div>
         <ul className="books">
           {" "}
@@ -32,10 +33,11 @@ export default function Search() {
                   className="shelve-container"
                   onChange={(e) => {
                     ShelveHandeler(e.target.value, book._id);
-                  
                   }}
                 >
-                  <option value="" disabled="true">Move to ...</option>
+                  <option value="" >
+                    Move to ...
+                  </option>
                   <option value="currently reading">currently reading</option>
                   <option value="want to read">Want to Read</option>
                   <option value="read">Read</option>
@@ -44,7 +46,6 @@ export default function Search() {
                 <p className="info">{book.name}</p>
                 <p className="info">{book.author}</p>
                 <p className="info">{book.category}</p>
-               
               </li>
             );
           })}

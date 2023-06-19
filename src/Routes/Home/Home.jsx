@@ -41,7 +41,7 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="" disabled="true">
+                    <option value="" >
                       Move to ...
                     </option>
                     <option value="currently reading">currently reading</option>
@@ -76,7 +76,7 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="" disabled="true">
+                    <option value="" >
                       Move to ...
                     </option>
                     <option value="currently reading">currently reading</option>
@@ -111,7 +111,7 @@ export default function Home() {
                     className="shelve-container"
                     onChange={(e) => ShelveHandeler(e.target.value, book._id)}
                   >
-                    <option value="" disabled="true">
+                    <option value="">
                       Move to ...
                     </option>
                     <option value="currently reading">currently reading</option>
@@ -122,7 +122,6 @@ export default function Home() {
                   <p>{book.name}</p>
                   <p>{book.author}</p>
                   <p>{book.category}</p>
-                  <p>{book.shelve}</p>
                 </li>
               );
             })}
